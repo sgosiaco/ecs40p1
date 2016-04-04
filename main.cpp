@@ -23,6 +23,13 @@ int main(void)
 
 Flight readFlights(int *in)
 {
-  Flight *temp = 0;
+  FILE *fp = fopen("reservations.txt", "r");
+  fscanf(fp, "%d", in);
+  Flight *temp = (Flight *)malloc(*in * sizeof(Flight));
+  for(int i = 0; i < *in; i++)
+  {
+    readFlight(temp, fp);
+  }//for loop
+  fclose(fp);
   return *temp;
-}
+} //readFlights
