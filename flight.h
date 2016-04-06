@@ -4,14 +4,13 @@
 #include <stdio.h>
 #include "plane.h"
 
-#define ORIGIN_MAX 20
-#define DEST_MAX 20
+#define AIRPORT_MAX 20
 
 typedef struct
 {
   int flightNum;
-  char origin[ORIGIN_MAX];
-  char destination[DEST_MAX];
+  char origin[AIRPORT_MAX];
+  char destination[AIRPORT_MAX];
   Plane *plane;
 } Flight;
 
