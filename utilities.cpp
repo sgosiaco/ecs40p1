@@ -45,8 +45,7 @@ int getChoice()
 
     if (in == -1)
     {
-      printf("Your choice is invalid.\n");
-      printf("Please try again.\n");
+      printf("Your choice is invalid.\nPlease try again.\n");
     }//if
     else//not 0 or 1
     {
@@ -64,6 +63,7 @@ int getChoice()
     {
       printf("Goodbye.\n");
     } //if
+
   } //if
   return in;
 } //getChoice
