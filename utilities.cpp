@@ -12,6 +12,7 @@ int getNumber()
   char *line;
   long num = 0;
   fgets(buf, 1024, stdin);
+
   if(buf[strlen(buf) - 1] == '\n')
     buf[strlen(buf) - 1] = '\0';
   num = strtol(buf, &line, 10);
@@ -47,7 +48,7 @@ int getChoice()
       printf("Your choice is invalid.\n");
       printf("Please try again.\n");
     }//if
-    else
+    else//not 0 or 1
     {
       if ((in < 0) || (in > 1))
       {
@@ -62,7 +63,9 @@ int getChoice()
     if (in == 0)
     {
       printf("Goodbye.\n");
+      
     }//if
+
   }//if
   return in;
 }//getChoice
