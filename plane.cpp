@@ -40,14 +40,15 @@ void showGrid(Plane *in)
 
   for(int i = 0; i < in->width; i++)
   {
-    putchar(i+'A');
+    putchar(i + 'A');
   }//for
+
   putchar('\n');
 
   for(int k = 0; k < in->rows; k++)
   {
-    printf("%2d   ", k+1);
-    
+    printf("%2d   ", k + 1);
+
     for(int j = 0; j < in->width; j++)
     {
 

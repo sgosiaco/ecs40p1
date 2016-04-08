@@ -35,11 +35,12 @@ void writeFlights(Flight *in, int num)
 {
   FILE *fp = fopen("reservations2.txt", "w");
   fprintf(fp, "%d", num);
-  
+
   for(int i = 0; i < num; i++)
   {
     writeFlight(in + i, fp);
   }//for
+
   fclose(fp);
 }//writeFlights
 
@@ -53,8 +54,11 @@ void freeFlights(Flight *in, int num)
 {
   for(int i = 0; i < num; i++)
   {
-    freeFlight(in+i);
+
+    freeFlight(in + i);
+
   }//for
+  
   free(in);
 }//freeFlights
 
