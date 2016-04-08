@@ -63,9 +63,8 @@ int getChoice()
     if (in == 0)
     {
       printf("Goodbye.\n");
-      
     }//if
-
   }//if
   return in;
+  
 }//getChoice
