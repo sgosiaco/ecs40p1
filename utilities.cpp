@@ -13,7 +13,7 @@ int getNumber()
   long num = 0;
   fgets(buf, 1024, stdin);
   if(buf[strlen(buf) - 1] == '\n')
-  buf[strlen(buf) - 1] = '\0';
+    buf[strlen(buf) - 1] = '\0';
   num = strtol(buf, &line, 10);
 
   for(int i = 0; i < strlen(line); i++)
@@ -29,40 +29,6 @@ int getNumber()
     return -1;
   return num;
 }//getNumber
-
-int getNumber2()
-{
-  long num = 0;
-  char c = getchar();
-
-  while(isspace(c) != 0)
-  {
-    c = getchar();
-  }//while
-
-  while(true)
-  {
-    if(c > 47 && c < 58 && num != -1)
-    {
-      num = (num * 10) + c - '0';
-      c = getchar();
-    }//if
-    else
-    {
-      num = -1;
-    }
-    if(c == EOF || c == '\n')
-    {
-      break;
-    }//if
-  }//while
-
-  if(num < INT_MAX && num > INT_MIN)
-  {
-    return num;
-  }
-  return -1;
-}//getNumber2
 
 int getChoice()
 {
