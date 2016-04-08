@@ -34,10 +34,11 @@ void printFlightInfo(Flight *in)
 void writeFlights(Flight *in, int num)
 {
   FILE *fp = fopen("reservations2.txt", "w");
-  fprintf(fp,"%d", num);
+  fprintf(fp, "%d", num);
+  
   for(int i = 0; i < num; i++)
   {
-    writeFlight(in+i, fp);
+    writeFlight(in + i, fp);
   }//for
   fclose(fp);
 }//writeFlights

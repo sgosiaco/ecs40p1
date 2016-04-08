@@ -16,7 +16,7 @@ int main(void)
   {
     printf("Inside while");
     //addPassenger(flights, numFlights);
-  }
+  }//while
   //writeFlights(flights, numFlights);
   exit(EXIT_SUCCESS);
 }//main
@@ -26,6 +26,7 @@ Flight readFlights(int *in)
   FILE *fp = fopen("reservations.txt", "r");
   fscanf(fp, "%d", in);
   Flight *temp = (Flight *)malloc(*in * sizeof(Flight));
+  
   for(int i = 0; i < *in; i++)
   {
     readFlight(temp, fp);

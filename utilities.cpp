@@ -15,6 +15,7 @@ int getNumber()
   if(buf[strlen(buf) - 1] == '\n')
   buf[strlen(buf) - 1] = '\0';
   num = strtol(buf, &line, 10);
+
   for(int i = 0; i < strlen(line); i++)
   {
     if(isalpha(line[i]))
@@ -23,8 +24,9 @@ int getNumber()
       break;
     }//if
   }//for
+
   if(num > INT_MAX || num < INT_MIN)
-  return -1;
+    return -1;
   return num;
 }//getNumber
 
@@ -32,10 +34,12 @@ int getNumber2()
 {
   long num = 0;
   char c = getchar();
+
   while(isspace(c) != 0)
   {
     c = getchar();
   }//while
+
   while(true)
   {
     if(c > 47 && c < 58 && num != -1)
@@ -52,6 +56,7 @@ int getNumber2()
       break;
     }//if
   }//while
+
   if(num < INT_MAX && num > INT_MIN)
   {
     return num;
@@ -65,10 +70,12 @@ int getChoice()
   printf("\nECS Flight Reservation Menu\n");
   printf("0. Exit.\n");
   printf("1. Add Passenger.\n");
+
   do
   {
     printf("\nPlease enter your choice: ");
     in = getNumber();
+
     if (in == -1)
     {
       printf("Your choice is invalid.\n");
@@ -83,8 +90,11 @@ int getChoice()
       }//if
     }//else
   } while ((in < 0) || (in > 1));
-  if (in != -1) {
-    if (in == 0) {
+
+  if (in != -1)
+  {
+    if (in == 0)
+    {
       printf("Goodbye.\n");
     }//if
   }//if
