@@ -63,7 +63,7 @@ int getChoice()
     {
       printf("Goodbye.\n");
     } //if
-
   } //if
+
   return in;
 } //getChoice
