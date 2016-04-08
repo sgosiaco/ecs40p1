@@ -62,30 +62,30 @@ int getNumber2()
 int getChoice()
 {
   int in = 0;
-  puts("\nECS Flight Reservation Menu");
-  puts("0. Exit.");
-  puts("1. Add Passenger.");
+  printf("\nECS Flight Reservation Menu\n");
+  printf("0. Exit.\n");
+  printf("1. Add Passenger.\n");
   do
   {
     printf("\nPlease enter your choice: ");
     in = getNumber();
     if (in == -1)
     {
-      puts("Your choice is invalid.");
-      puts("Please try again.");
+      printf("Your choice is invalid.\n");
+      printf("Please try again.\n");
     }//if
     else
     {
       if ((in < 0) || (in > 1))
       {
         printf("%d is not an available choice.\n", in);
-        puts("Please try again.");
+        printf("Please try again.\n");
       }//if
     }//else
   } while ((in < 0) || (in > 1));
   if (in != -1) {
     if (in == 0) {
-      puts("Goodbye.");
+      printf("Goodbye.\n");
     }//if
   }//if
   return in;
