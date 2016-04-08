@@ -18,10 +18,11 @@ void freePlane(Plane *in)
 void readPlane(Plane *in, FILE *fp)
 {
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
-  in->passengers = (char ***) malloc((in->rows * sizeof(char **)) + (in->width * sizeof(char *)));
+  in->passengers = (char ***) malloc((in->rows * sizeof(char *)) + (in->width *  sizeof(char )));
+  *(in->passengers) = (char **) malloc(in->rows * sizeof(char *));
   for(int i = 0; i < in->rows; i++)
   {
-    //*(in->passengers) =
+    *(in->passengers)[i] = (char *)malloc(in->width * sizeof(char));
   }
 }
 
