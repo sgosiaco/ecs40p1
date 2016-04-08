@@ -26,7 +26,7 @@ int getNumber()
     }//if
   }//for
 
-  if(num > INT_MAX || num < INT_MIN)
+  if(num > INT_MAX || num < INT_MIN || num < 0)
     return -1;
   return num;
 }//getNumber
