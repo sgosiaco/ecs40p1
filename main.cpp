@@ -1,6 +1,3 @@
-/**
- * Main.cpp
- */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,17 +6,20 @@
 #include "utilities.h"
 
 Flight readFlights(int *in);
-/*
- *  main routine
- */
+
 int main(void)
 {
   int numFlights;
   Flight *flights;
-  *flights = readFlights(&numFlights);
-
+  //*flights = readFlights(&numFlights);
+  while(getChoice() != 0)
+  {
+    printf("Inside while");
+    //addPassenger(flights, numFlights);
+  }
+  //writeFlights(flights, numFlights);
   exit(EXIT_SUCCESS);
-}
+}//main
 
 Flight readFlights(int *in)
 {

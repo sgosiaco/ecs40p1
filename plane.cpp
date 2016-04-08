@@ -7,13 +7,13 @@ void addPassenger(Plane *in)
 {
 
 
-}
+}//addPassenger
 
 void freePlane(Plane *in)
 {
 
 
-}
+}//freePlane
 
 void readPlane(Plane *in, FILE *fp)
 {
@@ -23,14 +23,14 @@ void readPlane(Plane *in, FILE *fp)
   for(int i = 0; i < in->rows; i++)
   {
     *(in->passengers)[i] = (char *)malloc(in->width * sizeof(char));
-  }
-}
+  }//for
+}//readPlane
 
 void writePlane(Plane *in, FILE *fp)
 {
 
 
-}
+}//writePlane
 
 void showGrid(Plane *in)
 {
@@ -38,7 +38,7 @@ void showGrid(Plane *in)
   for(int i = 0; i < in->width; i++)
   {
     putchar(i+'A');
-  }
+  }//for
   putchar('\n');
   for(int k = 0; k < in->rows; k++)
   {
@@ -46,6 +46,6 @@ void showGrid(Plane *in)
     for(int j = 0; j < in->width; j++)
     {
 
-    }
-  }
-}
+    }//for
+  }//for
+}//showGrid
