@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "plane.h"
+#include "utilities.h"
 
 #define AIRPORT_MAX 20
 

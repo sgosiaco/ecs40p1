@@ -17,8 +17,34 @@ void readFlight(Flight *in, FILE *fp)
 
 void addPassenger(Flight *in, int num)
 {
+  printf("Flt# Origin               Destination\n");
 
+  for(int i = 0; i < num; i++)
+  {
+    printFlightInfo(in + i);
+  }//for
+  printf("\nFlight number (0 = exit): ");
+  int read = getNumber();
 
+  if(read <= 0)
+  {
+    if(read == -1)
+      printf("That is an invalid flight nunber.\nPlease try again.\n");
+    else //Exit case when user enters 0
+      return;
+  }//if
+  else //Input greater than 0
+  {
+    for(int k = 0; k < num; k++)
+    {
+      if(read == (in + k)->flightNum)
+      {
+        addPassenger(in + k);
+        return;
+      }//if
+    }//for
+    printf("We do not have a flight number %d.\nPlease try again.\n", read);
+  }
 }//addPassenger
 
 void addPassenger(Flight *in)
@@ -58,7 +84,7 @@ void freeFlights(Flight *in, int num)
     freeFlight(in + i);
 
   }//for
-  
+
   free(in);
 }//freeFlights
 
