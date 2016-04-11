@@ -17,7 +17,7 @@ int getNumber()
     buf[strlen(buf) - 1] = '\0';
   num = strtol(buf, &line, 10);
 
-  for(int i = 0; i < strlen(line); i++)
+  for(int i = 0; i < (int)strlen(line); i++)
   {
     if(isalpha(line[i]))
     {

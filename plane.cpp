@@ -24,7 +24,7 @@ int addPassenger(Plane *in)
           row = getNumber();
           if ((row <= 0) || (in->rows < row)) {
             if(row < 0)
-              printf("That is an invalid row number.\n");
+              printf("That is an invalid row number.\nPlease try again.\n");
             else
               printf("There is no row #%d on this flight.\nPlease try again.\n", row);
           }
