@@ -11,13 +11,12 @@ int main(void)
 {
   int numFlights;
   Flight *flights;
-  //*flights = readFlights(&numFlights);
+  *flights = readFlights(&numFlights);
   while(getChoice() != 0)
   {
-    printf("Inside while");
-    //addPassenger(flights, numFlights);
+    addPassenger(flights, numFlights);
   }//while
-  //writeFlights(flights, numFlights);
+  writeFlights(flights, numFlights);
   exit(EXIT_SUCCESS);
 }//main
 
@@ -31,7 +30,7 @@ Flight readFlights(int *in)
   {
     readFlight(temp, fp);
   }//for loop
-  
+
   fclose(fp);
   return *temp;
 } //readFlights
