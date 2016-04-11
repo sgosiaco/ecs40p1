@@ -8,9 +8,12 @@ void readFlight(Flight *in, FILE *fp)
 {
   fscanf(fp, "%d", &(in->flightNum));
   fgets(in->origin, AIRPORT_MAX, fp);
+  printf("ORIG:%s\n", in->origin);
   strtok(in->origin, "\n\r");
   fgets(in->destination, AIRPORT_MAX, fp);
+  printf("DEST:%s\n", in->destination);
   strtok(in->destination, "\n\r");
+  printf("ORIG:%s DEST:%s\n", in->origin, in->destination);
   in->plane = (Plane *) malloc(sizeof(Plane));
   readPlane(in->plane, fp);
 }//readFlight

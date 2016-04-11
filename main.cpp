@@ -25,7 +25,6 @@ void readFlights(Flight **f, int *in)
   FILE *fp = fopen("reservations.txt", "r");
   fscanf(fp, "%d", in);
   *f = (Flight *)malloc(*in * sizeof(Flight));
-
   for(int i = 0; i < *in; i++)
   {
     readFlight(*f, fp);
