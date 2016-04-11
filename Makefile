@@ -1,17 +1,17 @@
-CC=g++
-CFLAGS=-c -Wall
-LDFLAGS=
-SOURCES=main.cpp flight.cpp plane.cpp utilities.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=airline.out
+airline.out : flight.o main.o plane.o utilities.o
+	g++ -ansi -Wall -g -o airline.out flight.o main.o plane.o utilities.o 
 
-all: $(SOURCES) $(EXECUTABLE)
+flight.o  : flight.cpp flight.h
+	g++ -ansi -Wall -g -c flight.cpp
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+main.o  : main.cpp flight.h plane.h utilities.h
+	g++ -ansi -Wall -g -c main.cpp
 
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+plane.o  : plane.cpp plane.h utilities.h
+	g++ -ansi -Wall -g -c plane.cpp
 
-clean:
-	rm *.o airline.out
+utilities.o  : utilities.cpp utilities.h
+	g++ -ansi -Wall -g -c utilities.cpp
+
+clean :
+	rm -f airline.out flight.o main.o plane.o utilities.o
