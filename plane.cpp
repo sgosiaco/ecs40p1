@@ -64,11 +64,11 @@ void freePlane(Plane *in)
 void readPlane(Plane *in, FILE *fp)
 {
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
-  (in->passengers) = (char ***) malloc(in->rows * sizeof(char **));
+  in->passengers = (char ***) malloc(in->rows * sizeof(char **));
 
   for(int i = 0; i < in->rows; i++)
   {
-    (in->passengers)[i] = (char **)malloc(in->width * sizeof(char *));
+    (in->passengers)[i] = (char **) malloc(in->width * sizeof(char *));
 
     for(int k = 0; k < in->width; k++)
     {
@@ -86,7 +86,7 @@ void readPlane(Plane *in, FILE *fp)
     fscanf(fp, "%d%c ", &row, &col);
     fgets(name, 80, fp);
     strtok(name, "\r\n");
-    (in->passengers)[row-1][col-'A'] = (char *)malloc(strlen(name) + 1);
+    (in->passengers)[row-1][col-'A'] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row-1][col-'A'], name);
     res++;
   } while (true);
