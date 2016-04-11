@@ -27,7 +27,7 @@ void readFlights(Flight **f, int *in)
   *f = (Flight *)malloc(*in * sizeof(Flight));
   for(int i = 0; i < *in; i++)
   {
-    readFlight(*f, fp);
+    readFlight(*f + i, fp);
   }//for loop
 
   fclose(fp);

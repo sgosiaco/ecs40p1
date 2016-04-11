@@ -7,13 +7,15 @@
 void readFlight(Flight *in, FILE *fp)
 {
   fscanf(fp, "%d", &(in->flightNum));
+  //printf("NUM: %d", in->flightNum);
   fgets(in->origin, AIRPORT_MAX, fp);
-  printf("ORIG:%s\n", in->origin);
+  fgets(in->origin, AIRPORT_MAX, fp);
+  //printf("ORIG:%s\n", in->origin);
   strtok(in->origin, "\n\r");
   fgets(in->destination, AIRPORT_MAX, fp);
-  printf("DEST:%s\n", in->destination);
+  //printf("DEST:%s\n", in->destination);
   strtok(in->destination, "\n\r");
-  printf("ORIG:%s DEST:%s\n", in->origin, in->destination);
+  //printf("ORIG:%s DEST:%s\n", in->origin, in->destination);
   in->plane = (Plane *) malloc(sizeof(Plane));
   readPlane(in->plane, fp);
 }//readFlight
@@ -26,27 +28,30 @@ void addPassenger(Flight *in, int num)
   {
     printFlightInfo(in + i);
   }//for
-  printf("\nFlight number (0 = exit): ");
-  int read = getNumber();
+  while(true)
+  {
+    printf("\nFlight number (0 = exit): ");
+    int read = getNumber();
 
-  if(read <= 0)
-  {
-    if(read == -1)
-      printf("That is an invalid flight nunber.\nPlease try again.\n");
-    else //Exit case when user enters 0
-      return;
-  }//if
-  else //Input greater than 0
-  {
-    for(int k = 0; k < num; k++)
+    if(read <= 0)
     {
-      if(read == (in + k)->flightNum)
+      if(read == -1)
+      printf("That is an invalid flight nunber.\nPlease try again.\n");
+      else //Exit case when user enters 0
+      return;
+    }//if
+    else //Input greater than 0
+    {
+      for(int k = 0; k < num; k++)
       {
-        addPassenger(in + k);
-        return;
-      }//if
-    }//for
-    printf("We do not have a flight number %d.\nPlease try again.\n", read);
+        if(read == (in + k)->flightNum)
+        {
+          addPassenger(in + k);
+          return;
+        }//if
+      }//for
+      printf("We do not have a flight number %d.\nPlease try again.\n", read);
+    }
   }
 }//addPassenger
 

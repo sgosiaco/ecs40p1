@@ -33,12 +33,13 @@ int addPassenger(Plane *in)
       } while (true);
       printf("Please enter the seat letter you wish to reserve: ");
       col = getchar() - 'A';
-      if (*(in->passengers)[row][col] == 0x0)
+      getchar();
+      if ((in->passengers)[row-1][col] == 0)
         break;
       printf("That seat is already occupied.\nPlease try again.\n");
     } while (true);
-    (in->passengers)[row][col] = (char *) malloc(strlen(name) + 1);
-    strcpy((in->passengers)[row][col], name);
+    (in->passengers)[row-1][col] = (char *) malloc(strlen(name) + 1);
+    strcpy((in->passengers)[row-1][col], name);
     in->reserved++;
     return 0;
   }
