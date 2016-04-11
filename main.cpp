@@ -5,13 +5,13 @@
 #include "plane.h"
 #include "utilities.h"
 
-Flight readFlights(int *in);
+void readFlights(Flight **f, int *in);
 
 int main(void)
 {
   int numFlights;
   Flight *flights;
-  *flights = readFlights(&numFlights);
+  readFlights(&flights, &numFlights);
   while(getChoice() != 0)
   {
     addPassenger(flights, numFlights);
@@ -20,17 +20,16 @@ int main(void)
   exit(EXIT_SUCCESS);
 }//main
 
-Flight readFlights(int *in)
+void readFlights(Flight **f, int *in)
 {
   FILE *fp = fopen("reservations.txt", "r");
   fscanf(fp, "%d", in);
-  Flight *temp = (Flight *)malloc(*in * sizeof(Flight));
+  *f = (Flight *)malloc(*in * sizeof(Flight));
 
   for(int i = 0; i < *in; i++)
   {
-    readFlight(temp, fp);
+    readFlight(*f, fp);
   }//for loop
 
   fclose(fp);
-  return *temp;
 } //readFlights
