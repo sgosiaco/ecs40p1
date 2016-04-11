@@ -11,7 +11,7 @@ typedef struct
   char ***passengers; // 2-dimensional
 } Plane;
 
-void addPassenger(Plane *in);
+int addPassenger(Plane *in);
 void freePlane(Plane *in);
 void readPlane(Plane *in, FILE *fp);
 void writePlane(Plane *in, FILE *fp);

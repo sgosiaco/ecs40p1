@@ -49,7 +49,10 @@ void addPassenger(Flight *in, int num)
 
 void addPassenger(Flight *in)
 {
-  addPassenger(in->plane);
+  if(addPassenger(in->plane) != 0)
+  {
+    printf("We are sorry but Flight #%d is full.\n", in->flightNum);
+  }
 }//addPassenger
 
 void printFlightInfo(Flight *in)
@@ -90,6 +93,6 @@ void freeFlights(Flight *in, int num)
 
 void freeFlight(Flight *in)
 {
-
-
+  freePlane(in->plane);
+  free(in->plane);
 }//freeFlight
