@@ -23,7 +23,10 @@ int addPassenger(Plane *in)
           printf("\nPlease enter the row of the seat you wish to reserve: ");
           row = getNumber();
           if ((row <= 0) || (in->rows < row)) {
-            printf("There is no row #%d on this flight.\nPlease try again.\n", row);
+            if(row < 0)
+              printf("That is an invalid row number.\n");
+            else
+              printf("There is no row #%d on this flight.\nPlease try again.\n", row);
           }
         } while (row <= 0);
         if (in->rows >= row)
