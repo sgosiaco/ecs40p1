@@ -19,7 +19,7 @@ int getNumber()
 
   for(int i = 0; i < (int)strlen(line); i++)
   {
-    if(isalpha(line[i]))
+    if(isalpha(line[i]) || ispunct(line[i]) || iscntrl(line[i]))
       num = ERR;
   }//for
 
