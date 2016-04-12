@@ -50,10 +50,10 @@ int getRow(Plane *in)
 
       if((row  = getNumber()) < 0)
         printf("That is an invalid row number.\nPlease try again.\n");
-
-      else if(row == 0 || (in->rows < row)) //Row is too large or too small
-        printf("There is no row #%d on this flight.\nPlease try again.\n", row);
         
+      if(row == 0 || (in->rows < row)) //Row is too large or too small
+        printf("There is no row #%d on this flight.\nPlease try again.\n", row);
+
     } while (row <= 0);
 
   } while (in->rows < row);
