@@ -36,10 +36,12 @@ int addPassenger(Plane *in)
       printf("Please enter the seat letter you wish to reserve: ");
       col = getchar() - 'A';
       getchar();
+
       if ((in->passengers)[row-1][col] == 0)
         break;
       printf("That seat is already occupied.\nPlease try again.\n");
     }//while
+
     (in->passengers)[row-1][col] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row-1][col], name);
     in->reserved++;
@@ -57,7 +59,9 @@ void freePlane(Plane *in)
         free((in->passengers)[i][j]);
     }//for
     free((in->passengers)[i]);
+
   }//for
+
   free(in->passengers);
 }//freePlane
 
@@ -100,11 +104,13 @@ void writePlane(Plane *in, FILE *fp)
   {
     if (in->rows <= row)
       break;
+
     for (int i = 0; i < in->width; i++)
     {
       if ((in->passengers)[row][i] != 0)
         fprintf(fp, "%d%c %s\n", row + 1, i + 'A', (in->passengers)[row][i]);
     }//for
+
     row++;
   }//while
 }//writePlane
@@ -125,10 +131,12 @@ void showGrid(Plane *in)
     {
       if((in->passengers)[k][j] != 0)
         putchar('X');
-      else
+      else//seat isn't taken
         putchar('-');
     }//for
+
     putchar('\n');
   }//for
+
   printf("\nX = reserved.\n");
 }//showGrid
