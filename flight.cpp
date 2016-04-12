@@ -83,13 +83,10 @@ void writeFlight(Flight *in, FILE *fp)
 void freeFlights(Flight *in, int num)
 {
   for(int i = 0; i < num; i++)
-    freeFlight(in + i);
+  {
+    freePlane((in + i)->plane);
+    free((in + i)->plane);
+  }//for
 
   free(in);
 }//freeFlights
-
-void freeFlight(Flight *in)
-{
-  freePlane(in->plane);
-  free(in->plane);
-}//freeFlight

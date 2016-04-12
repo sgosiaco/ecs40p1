@@ -23,6 +23,5 @@ void addPassenger(Flight *in);
 void writeFlights(Flight *in, int num);
 void writeFlight(Flight *in, FILE *fp);
 void freeFlights(Flight *in, int num);
-void freeFlight(Flight *in);
 
 #endif
