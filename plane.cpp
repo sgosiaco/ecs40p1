@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include "plane.h"
-#include "utilities.h"
 
 int addPassenger(Plane *in)
 {

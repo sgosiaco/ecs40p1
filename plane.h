@@ -2,6 +2,8 @@
 #define PLANE_H
 
 #include <stdio.h>
+#include "utilities.h"
+
 #define NAME_MAX 80
 
 typedef struct
