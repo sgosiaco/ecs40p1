@@ -21,13 +21,13 @@ int getNumber()
   {
     if(isalpha(line[i]))
     {
-      num = -1;
+      num = ERR;
       break;
     }//if
   }//for
 
   if(num > INT_MAX || num < INT_MIN || num < 0)
-    return -1;
+    return ERR;
   return num;
 }//getNumber
 
@@ -43,7 +43,7 @@ int getChoice()
     printf("\nPlease enter your choice: ");
     in = getNumber();
 
-    if (in == -1)
+    if (in == ERR)
     {
       printf("Your choice is invalid.\nPlease try again.\n");
     }//if
@@ -57,7 +57,7 @@ int getChoice()
     }//else
   } while ((in < 0) || (in > 1));
 
-  if (in != -1)
+  if (in != ERR)
   {
     if (in == 0)
     {
