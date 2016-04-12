@@ -1,8 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "plane.h"
 
 int addPassenger(Plane *in)
 {
-  char name[NAME_M];
+  char name[NAME_MAX];
   int row = 0, col = 0;
 
   if (in->reserved == (in->rows) * (in->width))
@@ -10,7 +14,7 @@ int addPassenger(Plane *in)
   else//if there's room
   {
     printf("Please enter the name of the passenger: ");
-    fgets(name, NAME_M, stdin);
+    fgets(name, NAME_MAX, stdin);
     strtok(name, "\n\r");
     showGrid(in);
 
@@ -76,7 +80,7 @@ void freePlane(Plane *in)
 void readPlane(Plane *in, FILE *fp)
 {
   int res = 0, row = 0;
-  char name[NAME_M], col = 0;
+  char name[NAME_MAX], col = 0;
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
   in->passengers = (char ***) malloc(in->rows * sizeof(char **));
 
@@ -93,7 +97,7 @@ void readPlane(Plane *in, FILE *fp)
     if (in->reserved <= res)
       break;
     fscanf(fp, "%d%c ", &row, &col);
-    fgets(name, NAME_M, fp);
+    fgets(name, NAME_MAX, fp);
     strtok(name, "\r\n");
     (in->passengers)[row - 1][col-'A'] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row - 1][col-'A'], name);
