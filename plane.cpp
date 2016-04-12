@@ -38,7 +38,7 @@ int addPassenger(Plane *in)
       col = getchar() - 'A';
       getchar();
 
-      if ((in->passengers)[row-1][col] == 0)
+      if ((in->passengers)[row - 1][col] == 0)
         break;
       printf("That seat is already occupied.\nPlease try again.\n");
     }//while
@@ -91,8 +91,8 @@ void readPlane(Plane *in, FILE *fp)
     fscanf(fp, "%d%c ", &row, &col);
     fgets(name, NAME_MAX, fp);
     strtok(name, "\r\n");
-    (in->passengers)[row-1][col-'A'] = (char *) malloc(strlen(name) + 1);
-    strcpy((in->passengers)[row-1][col-'A'], name);
+    (in->passengers)[row - 1][col-'A'] = (char *) malloc(strlen(name) + 1);
+    strcpy((in->passengers)[row - 1][col-'A'], name);
     res++;
   } while (true);
 }//readPlane

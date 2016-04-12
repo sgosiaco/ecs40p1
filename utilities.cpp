@@ -8,10 +8,10 @@
 
 int getNumber()
 {
-  char buf[1024];
+  char buf[BUF_SIZE];
   char *line;
   long num = 0;
-  fgets(buf, 1024, stdin);
+  fgets(buf, BUF_SIZE, stdin);
 
   if(buf[strlen(buf) - 1] == '\n')
     buf[strlen(buf) - 1] = '\0';
