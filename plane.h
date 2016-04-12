@@ -13,6 +13,7 @@ typedef struct
 } Plane;
 
 int addPassenger(Plane *in);
+int getRow(Plane *in);
 void freePlane(Plane *in);
 void readPlane(Plane *in, FILE *fp);
 void writePlane(Plane *in, FILE *fp);
