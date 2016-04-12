@@ -41,7 +41,7 @@ int addPassenger(Plane *in)
 int getRow(Plane *in)
 {
   int row = 0;
-  
+
   do
   {
     do
@@ -53,6 +53,7 @@ int getRow(Plane *in)
 
       else if(row == 0 || (in->rows < row)) //Row is too large or too small
         printf("There is no row #%d on this flight.\nPlease try again.\n", row);
+        
     } while (row <= 0);
 
   } while (in->rows < row);
