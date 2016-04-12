@@ -7,7 +7,7 @@
 
 int addPassenger(Plane *in)
 {
-  char name[80];
+  char name[NAME_MAX];
   int row = 0, col = 0;
 
   if (in->reserved == (in->rows) * (in->width))
@@ -15,7 +15,7 @@ int addPassenger(Plane *in)
   else//if there's room
   {
     printf("Please enter the name of the passenger: ");
-    fgets(name, 80, stdin);
+    fgets(name, NAME_MAX, stdin);
     strtok(name, "\n\r");
     showGrid(in);
 
@@ -29,6 +29,7 @@ int addPassenger(Plane *in)
 
           if((row  = getNumber()) < 0)
             printf("That is an invalid row number.\nPlease try again.\n");
+
           else if(row == 0 || (in->rows < row)) //Row is too large or too small
             printf("There is no row #%d on this flight.\nPlease try again.\n", row);
         } while (row <= 0);
@@ -58,6 +59,7 @@ void freePlane(Plane *in)
       if ((in->passengers)[i][j] != 0)
         free((in->passengers)[i][j]);
     }//for
+
     free((in->passengers)[i]);
 
   }//for
@@ -68,7 +70,7 @@ void freePlane(Plane *in)
 void readPlane(Plane *in, FILE *fp)
 {
   int res = 0;
-  char name[80];
+  char name[NAME_MAX];
   int row = 0;
   char col = '0';
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
@@ -87,7 +89,7 @@ void readPlane(Plane *in, FILE *fp)
     if (in->reserved <= res)
       break;
     fscanf(fp, "%d%c ", &row, &col);
-    fgets(name, 80, fp);
+    fgets(name, NAME_MAX, fp);
     strtok(name, "\r\n");
     (in->passengers)[row-1][col-'A'] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row-1][col-'A'], name);

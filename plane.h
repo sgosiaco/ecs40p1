@@ -2,13 +2,14 @@
 #define PLANE_H
 
 #include <stdio.h>
+#define NAME_MAX 80
 
 typedef struct
 {
   int rows;
   int width;
   int reserved;
-  char ***passengers; // 2-dimensional
+  char ***passengers;
 } Plane;
 
 int addPassenger(Plane *in);

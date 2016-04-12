@@ -30,7 +30,7 @@ void addPassenger(Flight *in, int num)
 
     if(read <= 0)
     {
-      if(read == -1)
+      if(read == ERR)
         printf("That is an invalid flight nunber.\nPlease try again.\n");
       else //Exit case when user enters 0
         return;
@@ -45,7 +45,7 @@ void addPassenger(Flight *in, int num)
           return;
         }//if
       }//for
-      
+
       printf("We do not have a flight number %d.\nPlease try again.\n", read);
     }//else
   }//while

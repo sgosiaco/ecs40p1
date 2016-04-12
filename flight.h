@@ -6,6 +6,7 @@
 #include "utilities.h"
 
 #define AIRPORT_MAX 20
+#define ERR -1
 
 typedef struct
 {
