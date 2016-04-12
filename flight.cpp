@@ -45,6 +45,7 @@ void addPassenger(Flight *in, int num)
           return;
         }//if
       }//for
+      
       printf("We do not have a flight number %d.\nPlease try again.\n", read);
     }//else
   }//while

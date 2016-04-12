@@ -9,6 +9,7 @@ int addPassenger(Plane *in)
 {
   char name[80];
   int row = 0, col = 0;
+
   if (in->reserved == (in->rows) * (in->width))
     return 1;
   else//if there's room
@@ -17,6 +18,7 @@ int addPassenger(Plane *in)
     fgets(name, 80, stdin);
     strtok(name, "\n\r");
     showGrid(in);
+
     while(true)
     {
       do
@@ -24,9 +26,10 @@ int addPassenger(Plane *in)
         do
         {
           printf("\nPlease enter the row of the seat you wish to reserve: ");
+
           if((row  = getNumber()) < 0)
             printf("That is an invalid row number.\nPlease try again.\n");
-          else if(row == 0 || (in->rows < row))
+          else if(row == 0 || (in->rows < row)) //Row is too large or too small
             printf("There is no row #%d on this flight.\nPlease try again.\n", row);
         } while (row <= 0);
       } while (in->rows < row);
