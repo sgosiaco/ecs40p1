@@ -72,7 +72,7 @@ void readPlane(Plane *in, FILE *fp)
   int res = 0;
   char name[NAME_MAX];
   int row = 0;
-  char col = '0';
+  char col = 0;
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
   in->passengers = (char ***) malloc(in->rows * sizeof(char **));
 
