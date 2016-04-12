@@ -21,19 +21,7 @@ int addPassenger(Plane *in)
 
     while(true)
     {
-      do
-      {
-        do
-        {
-          printf("\nPlease enter the row of the seat you wish to reserve: ");
-
-          if((row  = getNumber()) < 0)
-            printf("That is an invalid row number.\nPlease try again.\n");
-
-          else if(row == 0 || (in->rows < row)) //Row is too large or too small
-            printf("There is no row #%d on this flight.\nPlease try again.\n", row);
-        } while (row <= 0);
-      } while (in->rows < row);
+      row = getRow(in);
       printf("Please enter the seat letter you wish to reserve: ");
       col = getchar() - 'A';
       getchar();
@@ -49,6 +37,27 @@ int addPassenger(Plane *in)
     return 0;
   }//else
 }//addPassenger
+
+int getRow(Plane *in)
+{
+  int row = 0;
+  do
+  {
+    do
+    {
+      printf("\nPlease enter the row of the seat you wish to reserve: ");
+
+      if((row  = getNumber()) < 0)
+        printf("That is an invalid row number.\nPlease try again.\n");
+
+      else if(row == 0 || (in->rows < row)) //Row is too large or too small
+        printf("There is no row #%d on this flight.\nPlease try again.\n", row);
+    } while (row <= 0);
+    
+  } while (in->rows < row);
+
+  return row;
+}
 
 void freePlane(Plane *in)
 {
