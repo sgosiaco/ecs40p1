@@ -15,15 +15,12 @@ int getNumber()
 
   if(buf[strlen(buf) - 1] == '\n')
     buf[strlen(buf) - 1] = '\0';
-  num = strtol(buf, &line, 10);
+  num = strtol(buf, &line, BASE);
 
   for(int i = 0; i < (int)strlen(line); i++)
   {
     if(isalpha(line[i]))
-    {
       num = ERR;
-      break;
-    }//if
   }//for
 
   if(num > INT_MAX || num < INT_MIN || num < 0)
@@ -44,26 +41,19 @@ int getChoice()
     in = getNumber();
 
     if (in == ERR)
-    {
       printf("Your choice is invalid.\nPlease try again.\n");
-    }//if
-    else//not 0 or 1
+    else//not invalid
     {
-      if ((in < 0) || (in > 1))
+      if (in > 1)
       {
         printf("%d is not an available choice.\n", in);
         printf("Please try again.\n");
       }//if
     }//else
-  } while ((in < 0) || (in > 1));
+  } while ((in == ERR) || (in > 1));
 
-  if (in != ERR)
-  {
-    if (in == 0)
-    {
-      printf("Goodbye.\n");
-    } //if
-  } //if
+  if (in == 0)
+    printf("Goodbye.\n");
 
   return in;
 } //getChoice

@@ -50,7 +50,7 @@ int getRow(Plane *in)
 
       if((row  = getNumber()) < 0)
         printf("That is an invalid row number.\nPlease try again.\n");
-        
+
       if(row == 0 || (in->rows < row)) //Row is too large or too small
         printf("There is no row #%d on this flight.\nPlease try again.\n", row);
 
@@ -80,10 +80,8 @@ void freePlane(Plane *in)
 
 void readPlane(Plane *in, FILE *fp)
 {
-  int res = 0;
-  char name[NAME_MAX];
-  int row = 0;
-  char col = 0;
+  int res = 0, row = 0;
+  char name[NAME_MAX], col = 0;
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
   in->passengers = (char ***) malloc(in->rows * sizeof(char **));
 
@@ -95,7 +93,7 @@ void readPlane(Plane *in, FILE *fp)
       (in->passengers)[i][k] = 0;
   }//for
 
-  do
+  while(true)
   {
     if (in->reserved <= res)
       break;
@@ -105,7 +103,7 @@ void readPlane(Plane *in, FILE *fp)
     (in->passengers)[row - 1][col-'A'] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row - 1][col-'A'], name);
     res++;
-  } while (true);
+  }
 }//readPlane
 
 void writePlane(Plane *in, FILE *fp)
