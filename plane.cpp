@@ -103,7 +103,7 @@ void readPlane(Plane *in, FILE *fp)
     (in->passengers)[row - 1][col-'A'] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row - 1][col-'A'], name);
     res++;
-  }
+  }//while
 }//readPlane
 
 void writePlane(Plane *in, FILE *fp)
