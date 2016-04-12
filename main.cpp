@@ -15,7 +15,7 @@ int main(void)
 
   while(getChoice() != 0)
     addPassenger(flights, numFlights);
-    
+
   writeFlights(flights, numFlights);
   exit(EXIT_SUCCESS);
 }//main

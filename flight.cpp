@@ -71,6 +71,7 @@ void writeFlights(Flight *in, int num)
     writeFlight(in + i, fp);
 
   fclose(fp);
+  freeFlights(in, num);
 }//writeFlights
 
 void writeFlight(Flight *in, FILE *fp)
