@@ -8,61 +8,62 @@
 int addPassenger(Plane *in)
 {
   char name[80];
-  int row = 0;
-  int col = 0;
+  int row = 0, col = 0;
   if (in->reserved == (in->rows) * (in->width))
     return 1;
-  else {
+  else//if there's room
+  {
     printf("Please enter the name of the passenger: ");
     fgets(name, 80, stdin);
     strtok(name, "\n\r");
     showGrid(in);
-    do {
-      do {
-        do {
+    while(true)
+    {
+      do
+      {
+        do
+        {
           printf("\nPlease enter the row of the seat you wish to reserve: ");
-          row = getNumber();
-          if ((row <= 0) || (in->rows < row)) {
-            if(row < 0)
-              printf("That is an invalid row number.\nPlease try again.\n");
-            else
-              printf("There is no row #%d on this flight.\nPlease try again.\n", row);
-          }
+          if((row  = getNumber()) < 0)
+            printf("That is an invalid row number.\nPlease try again.\n");
+          else if(row == 0 || (in->rows < row))
+            printf("There is no row #%d on this flight.\nPlease try again.\n", row);
         } while (row <= 0);
-        if (in->rows >= row)
-          break;
-        else
-          continue;
-      } while (true);
+      } while (in->rows < row);
       printf("Please enter the seat letter you wish to reserve: ");
       col = getchar() - 'A';
       getchar();
       if ((in->passengers)[row-1][col] == 0)
         break;
       printf("That seat is already occupied.\nPlease try again.\n");
-    } while (true);
+    }//while
     (in->passengers)[row-1][col] = (char *) malloc(strlen(name) + 1);
     strcpy((in->passengers)[row-1][col], name);
     in->reserved++;
     return 0;
-  }
-}
+  }//else
+}//addPassenger
 
 void freePlane(Plane *in)
 {
-  for (int i = 0; i < in->rows; i++) {
-    for (int j = 0; j < in->width; j++) {
-      if ((in->passengers)[i][j] != 0x0) {
+  for (int i = 0; i < in->rows; i++)
+  {
+    for (int j = 0; j < in->width; j++)
+    {
+      if ((in->passengers)[i][j] != 0)
         free((in->passengers)[i][j]);
-      }
-    }
+    }//for
     free((in->passengers)[i]);
-  }
+  }//for
   free(in->passengers);
 }//freePlane
 
 void readPlane(Plane *in, FILE *fp)
 {
+  int res = 0;
+  char name[80];
+  int row = 0;
+  char col = '0';
   fscanf(fp, "%d %d %d", &(in->rows), &(in->width), &(in->reserved));
   in->passengers = (char ***) malloc(in->rows * sizeof(char **));
 
@@ -71,18 +72,13 @@ void readPlane(Plane *in, FILE *fp)
     (in->passengers)[i] = (char **) malloc(in->width * sizeof(char *));
 
     for(int k = 0; k < in->width; k++)
-    {
       (in->passengers)[i][k] = 0;
-    }
   }//for
-  int res = 0;
-  char name[80];
-  int row = 0;
-  char col = '0';
-  do {
-    if (in->reserved <= res) {
+
+  do
+  {
+    if (in->reserved <= res)
       break;
-    }
     fscanf(fp, "%d%c ", &row, &col);
     fgets(name, 80, fp);
     strtok(name, "\r\n");
@@ -96,18 +92,18 @@ void writePlane(Plane *in, FILE *fp)
 {
   fprintf(fp, "%d %d %d\n", in->rows, in->width, in->reserved);
   int row = 0;
-  do {
-    if (in->rows <= row) {
+
+  while(true)
+  {
+    if (in->rows <= row)
       break;
-    }
     for (int i = 0; i < in->width; i++)
     {
-      if ((in->passengers)[row][i] != 0x0) {
+      if ((in->passengers)[row][i] != 0)
         fprintf(fp, "%d%c %s\n", row + 1, i + 'A', (in->passengers)[row][i]);
-      }
-    }
+    }//for
     row++;
-  } while (true);
+  }//while
 }//writePlane
 
 void showGrid(Plane *in)
@@ -115,10 +111,7 @@ void showGrid(Plane *in)
   printf("ROW# ");
 
   for(int i = 0; i < in->width; i++)
-  {
     putchar(i + 'A');
-  }//for
-
   putchar('\n');
 
   for(int k = 0; k < in->rows; k++)

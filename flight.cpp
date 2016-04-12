@@ -21,9 +21,8 @@ void addPassenger(Flight *in, int num)
   printf("Flt# Origin               Destination\n");
 
   for(int i = 0; i < num; i++)
-  {
     printFlightInfo(in + i);
-  }//for
+
   while(true)
   {
     printf("\nFlight number (0 = exit): ");
@@ -32,9 +31,9 @@ void addPassenger(Flight *in, int num)
     if(read <= 0)
     {
       if(read == -1)
-      printf("That is an invalid flight nunber.\nPlease try again.\n");
+        printf("That is an invalid flight nunber.\nPlease try again.\n");
       else //Exit case when user enters 0
-      return;
+        return;
     }//if
     else //Input greater than 0
     {
@@ -47,16 +46,14 @@ void addPassenger(Flight *in, int num)
         }//if
       }//for
       printf("We do not have a flight number %d.\nPlease try again.\n", read);
-    }
-  }
+    }//else
+  }//while
 }//addPassenger
 
 void addPassenger(Flight *in)
 {
   if(addPassenger(in->plane) != 0)
-  {
     printf("We are sorry but Flight #%d is full.\n", in->flightNum);
-  }
 }//addPassenger
 
 void printFlightInfo(Flight *in)
@@ -70,9 +67,7 @@ void writeFlights(Flight *in, int num)
   fprintf(fp, "%d\n", num);
 
   for(int i = 0; i < num; i++)
-  {
     writeFlight(in + i, fp);
-  }//for
 
   fclose(fp);
 }//writeFlights
@@ -86,11 +81,7 @@ void writeFlight(Flight *in, FILE *fp)
 void freeFlights(Flight *in, int num)
 {
   for(int i = 0; i < num; i++)
-  {
-
     freeFlight(in + i);
-
-  }//for
 
   free(in);
 }//freeFlights
