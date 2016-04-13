@@ -91,6 +91,7 @@ void readPlane(Plane *in, FILE *fp)
     for(int k = 0; k < in->width; k++)
       (in->passengers)[i][k] = 0;
   }//for
+
   for(int k = 0; k < in->reserved; k++)
   {
     fscanf(fp, "%d%c ", &row, &col);
@@ -104,21 +105,15 @@ void readPlane(Plane *in, FILE *fp)
 void writePlane(Plane *in, FILE *fp)
 {
   fprintf(fp, "%d %d %d\n", in->rows, in->width, in->reserved);
-  int row = 0;
 
-  while(true)
+  for(int row = 0; row < in->rows; row++)
   {
-    if (in->rows <= row)
-      break;
-
     for (int i = 0; i < in->width; i++)
     {
       if ((in->passengers)[row][i] != 0)
         fprintf(fp, "%d%c %s\n", row + 1, i + 'A', (in->passengers)[row][i]);
     }//for
-
-    row++;
-  }//while
+  }//for
 }//writePlane
 
 void showGrid(Plane *in)
