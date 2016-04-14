@@ -12,8 +12,10 @@ int getNumber()
   char *line;
   long num = 0;
   fgets(buf, BUF_SIZE, stdin);
+  
   if(buf[strlen(buf) - 1] == '\n' && strlen(buf) == 1)
-    return -1;
+    return ERR;
+  
   if(buf[strlen(buf) - 1] == '\n')
     buf[strlen(buf) - 1] = '\0';
   num = strtol(buf, &line, BASE);
